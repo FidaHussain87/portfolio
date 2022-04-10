@@ -9,6 +9,7 @@ import {
 import { useTranslation } from "react-i18next";
 import Navbar from "./components/Navbar/Navbar";
 import Intro from "./components/Intro/Intro";
+import Experience from "./components/Experience/Experience";
 // import Login from "./Pages/Login";
 // import { Register } from "./Pages/Register";
 // import PrivateRoute from "./routes/privateRoute";
@@ -23,6 +24,7 @@ const App = () => {
      <Navbar/>
      <Intro/>
      <Services/>
+     <Experience/>
    </div>
   );
 };
