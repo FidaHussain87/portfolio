@@ -29,12 +29,22 @@
   margin-top: 1rem;
 }
 .right {
+  position: relative;
 }
+.right > * {
+  position: absolute;
+}
+
 .services-button {
   width: 8rem;
   height: 2rem;
   margin-top: 1rem;
-  
 }
 .service-blur-1 {
+    top: 13rem;
+    left: -18rem;
+}
+.service-blur-2{
+    left: 14rem;
+    top: 8rem;
 }
