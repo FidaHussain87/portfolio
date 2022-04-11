@@ -7,9 +7,13 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Navbar from "./components/Navbar/Navbar";
-import Intro from "./components/Intro/Intro";
-import Experience from "./components/Experience/Experience";
+import Portfolio from "./components/Portfolio/Portfolio";
+const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
+const Intro = React.lazy(() => import("./components/Intro/Intro"));
+const Experience = React.lazy(() =>
+  import("./components/Experience/Experience")
+);
+const Works = React.lazy(() => import("./components/Works/Works"));
 // import Login from "./Pages/Login";
 // import { Register } from "./Pages/Register";
 // import PrivateRoute from "./routes/privateRoute";
@@ -20,12 +24,14 @@ const Services = React.lazy(() => import("./components/Services/Services"));
 
 const App = () => {
   return (
-   <div className="App">
-     <Navbar/>
-     <Intro/>
-     <Services/>
-     <Experience/>
-   </div>
+    <div className="App">
+      <Navbar />
+      <Intro />
+      <Services />
+      <Experience />
+      <Works />
+      <Portfolio/>
+    </div>
   );
 };
 

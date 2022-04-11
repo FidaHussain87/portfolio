@@ -1,0 +1,16 @@
+.slider .swiper {
+  margin-left: 0 !important;
+  overflow: visible !important;
+}
+.slider {
+  margin-top: 3rem;
+  width: 100%;
+}
+.slider .swiper-slide {
+  width: 56rem;
+}
+.slider img {
+  width: 19rem;
+  filter: drop-shadow(-12px 15px 13px rgba(0, 0, 0, 0.25));
+  border-radius: 19px;
+}
