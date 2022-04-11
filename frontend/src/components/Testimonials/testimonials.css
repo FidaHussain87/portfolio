@@ -9,14 +9,14 @@
 
   position: relative;
 }
-.testimonial-heading {
+.heading {
   align-self: start;
 }
-.testimonial-heading > * {
+.heading > * {
   font-size: 2rem;
   font-weight: bold;
 }
-.testimonial-heading span:nth-of-type(2) {
+.heading span:nth-of-type(2) {
   color: var(--orange);
 }
 .t-blur1 {
@@ -24,7 +24,7 @@
   top: 19rem;
 }
 .t-blur2 {
-  left: 0rem;
+  left: 12rem;
   top: 12rem;
 }
 .testimonial-slider {

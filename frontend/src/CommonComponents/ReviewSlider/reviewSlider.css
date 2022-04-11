@@ -8,6 +8,9 @@
     align-items: center;
     justify-content: center;
 }
+.swiper-pagination-bullet-active{
+  background:var(--orange);
+}
 .review-wrapper {
   display: flex;
   flex-direction: column;

@@ -43,7 +43,7 @@ const Testimonials = () => {
   ]
   return (
     <div className="testimonial-wrapper">
-      <div className="testimonial-heading">
+      <div className="heading">
         <span>Clients always get </span>
         <span>Exceptional Work </span>
         <span>from me...</span>
@@ -52,7 +52,7 @@ const Testimonials = () => {
         className="blur t-blur1"
         style={{ background: 'var(--purple)' }}
       ></div>
-      <div className="blur t-blur2" style={{ background: 'skyblue' }}></div>
+      <div className="blur t-blur2" style={{ background: '#CAF0F8' }}></div>
       <div className="testimonial-slider">
         <ReviewSlider clients={clients} />
       </div>

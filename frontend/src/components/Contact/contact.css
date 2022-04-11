@@ -1,0 +1,39 @@
+.contact-form {
+  padding: 0 3rem 0 3rem;
+  display: flex;
+  height: 80vh;
+  margin-top: 4rem;
+}
+
+.contact-right {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+}
+.contact-right > form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.contact-right .user {
+  width: 20rem;
+  height: 2rem;
+  padding: 0.3rem;
+  outline: none;
+  border: 2px solid var(--orange);
+  border-radius: 8px;
+  font-size: 16px;
+}
+textarea {
+  height: 4rem !important;
+}
+.c-blur2 {
+  top: 1rem;
+  left: 19rem;
+}
+.c-blur1 {
+    left: -3rem;
+  /* top: 3rem; */
+}
