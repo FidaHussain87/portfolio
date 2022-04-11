@@ -7,6 +7,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Portfolio from "./components/Portfolio/Portfolio";
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
 const Intro = React.lazy(() => import("./components/Intro/Intro"));
 const Experience = React.lazy(() =>
@@ -29,6 +30,7 @@ const App = () => {
       <Services />
       <Experience />
       <Works />
+      <Portfolio/>
     </div>
   );
 };

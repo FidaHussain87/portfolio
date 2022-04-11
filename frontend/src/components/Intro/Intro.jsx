@@ -9,7 +9,7 @@ import boy from '../../utils/images/boy.png'
 import thumbup from '../../utils/images/thumbup.png'
 import crown from '../../utils/images/crown.png'
 import glassesimoji from '../../utils/images/glassesimoji.png'
-import FloatingDiv from '../FloatingDiv/FloatingDiv'
+import FloatingDiv from '../../CommonComponents/FloatingDiv/FloatingDiv'
 const Intro = () => {
   return (
     <div className="intro">
