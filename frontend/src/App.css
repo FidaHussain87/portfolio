@@ -29,6 +29,14 @@
   background: white;
   color:var(--orange);
   border:1px solid var(--orange);
-  
+}
 
+.blur {
+  background: rgb(238 210 255);
+  position: absolute;
+  width: 22rem;
+  height: 14rem;
+  border-radius: 50%;
+  filter: blur(72px);
+  z-index: -9;
 }

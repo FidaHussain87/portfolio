@@ -47,7 +47,10 @@ const Services = () => {
             detail={'Fin-Tech, Ed-Tech, E-Commerce'}
           />
         </div>
-        <div className="blur service-blur-2" style={{background:"var(--purple)"}}></div>
+        <div
+          className="blur service-blur-2"
+          style={{ background: 'var(--purple)' }}
+        ></div>
       </div>
     </div>
   )

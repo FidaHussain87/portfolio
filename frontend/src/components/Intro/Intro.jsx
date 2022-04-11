@@ -50,16 +50,10 @@ const Intro = () => {
         <div className="intro-floatingdiv-bottom">
           <FloatingDiv crown={thumbup} txt1="Best designer" txt2="Award" />
         </div>
-        <div className=" blur"></div>
+        <div className=" blur blur-right"></div>
         <div
-          className=" blur"
-          style={{
-            background: '#c1f5ff',
-            top: '17rem',
-            width: '21rem',
-            height: '11rem',
-            left: '-9rem',
-          }}
+          className=" blur blur-left"
+          
         ></div>
       </div>
     </div>

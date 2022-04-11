@@ -1,0 +1,33 @@
+.testimonial-wrapper {
+  padding: 0 3rem 0 6rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+
+  position: relative;
+}
+.testimonial-heading {
+  align-self: start;
+}
+.testimonial-heading > * {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.testimonial-heading span:nth-of-type(2) {
+  color: var(--orange);
+}
+.t-blur1 {
+  left: 38rem;
+  top: 19rem;
+}
+.t-blur2 {
+  left: 0rem;
+  top: 12rem;
+}
+.testimonial-slider {
+  width: 100%;
+  margin-top: 2rem;
+}
