@@ -1,0 +1,69 @@
+I want to build a highly modern, animated, progressive, and innovative portfolio website using the MERN stack with TypeScript, along with Vite, TailwindCSS, and Framer Motion. I already have a basic setup with Vite, Framer Motion, and TailwindCSS, and now I want to complete the full website with a truly creative, animated, and non-traditional design — no old-school or boring layouts.
+
+🧠 My Background:
+Name: [Add your name]
+
+Education: Bachelor's in Software Engineering from ABC University
+
+Experience: 4+ years of experience as a Full Stack Web Developer
+
+Skills: Python, JavaScript, TypeScript, Perl, HTML, CSS, Docker, GCP, AWS, Azure, Kubernetes, Git, GitHub, GitLab, VS Code, PostgreSQL, MongoDB, MySQL, ReactJS, NestJS, NextJS, Angular, TailwindCSS, Material UI, Chakra UI, React Icons, JWT Auth
+
+🧩 Website Requirements:
+Fully Responsive across all devices
+
+Progressive Web App (PWA) support
+
+Built with modern design principles
+
+Use smooth animations, scroll-based transitions, and Framer Motion for subtle interactivity
+
+Beautiful use of typography, layout spacing, and modern UI/UX patterns
+
+Creative and innovative design—something unique that stands out from typical portfolios
+
+📁 Sections to Include:
+Home – Hero section with animation and short intro
+
+About Me – Brief background with a profile image, animated sections
+
+Experience – Work history with icons/logos, interactive timeline or cards
+
+Projects – Showcase key projects, filterable by tech, with links and live previews
+
+Skills – Tech stack with logos, possibly animated bars or circular indicators
+
+Education – Degree and university info
+
+Certifications – Display any technical certificates visually
+
+CV Section – Button to preview CV inline and another to download CV
+
+Contact –
+
+WhatsApp button: Clicking opens WhatsApp with my number
+
+Email form: HR can send email through form and I receive it at abc.def@gmail.com
+
+Social Media Links – GitHub, LinkedIn, Twitter, etc., with icons and hover effects
+
+📦 Technologies Required:
+Frontend: ReactTS + Vite + TailwindCSS + Framer Motion + React Icons (or Lucide)
+
+Backend (optional): Express or NestJS if needed for email
+
+Auth: JWT (if login system needed in future)
+
+Design: Highly creative, use glassmorphism, soft shadows, gradients, and micro-interactions
+
+📌 Make sure:
+
+The code is clean, modular, reusable
+
+Animations are not overdone but elegant
+
+Code is production-ready with comments
+
+Site should feel like a premium developer brand
+
+No static HTML dumps—use proper reusable components and structure
