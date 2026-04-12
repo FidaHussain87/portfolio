@@ -1,0 +1,16 @@
+/* Google Fonts are loaded via index.html <link> tags for optimal loading */
+/* This file provides font utility classes */
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
