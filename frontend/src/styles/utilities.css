@@ -1,0 +1,176 @@
+/* Custom utility classes — in @layer utilities so Tailwind can compose with them */
+@layer utilities {
+  /* Glass morphism utilities */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-medium {
+    background: var(--glass-bg-medium);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border-medium);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary-400), var(--color-secondary-400), var(--color-accent-400));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow border */
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-secondary-500), var(--color-accent-500));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+
+  /* Section padding */
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Futuristic nav link with gradient underline expanding on hover */
+  .nav-link-futuristic {
+    position: relative;
+  }
+
+  .nav-link-futuristic::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-500),
+      var(--color-secondary-500),
+      var(--color-accent-500)
+    );
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+
+  .nav-link-futuristic:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  @layer utilities {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  @layer utilities {
+    .section-padding {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+}
+
+/* ── 2050 Futuristic Navigation Keyframes ────────────────────────────────── */
+
+/* Holographic rainbow shimmer that travels along the nav border */
+@keyframes holo-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Expanding ring for hex status indicator */
+@keyframes pulse-ring-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Subtle pulsing glow on active pill backdrop */
+@keyframes pill-energy {
+  0%, 100% {
+    box-shadow:
+      0 0 16px rgba(0, 229, 219, 0.2),
+      0 0 4px rgba(0, 229, 219, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 24px rgba(0, 229, 219, 0.35),
+      0 0 8px rgba(0, 229, 219, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Accessibility: disable all futuristic animations for reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes holo-shimmer {
+    0%, 100% {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes pulse-ring-expand {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pill-energy {
+    0%, 100% {
+      box-shadow:
+        0 0 16px rgba(0, 229, 219, 0.2),
+        0 0 4px rgba(0, 229, 219, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  .nav-link-futuristic::after {
+    transition: none;
+  }
+}

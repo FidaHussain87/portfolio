@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>New Message — FH Portfolio</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; }
+
+    /* Mobile styles */
+    @media only screen and (max-width: 620px) {
+      .email-container {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .content-padding {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      .outer-padding {
+        padding: 20px 10px !important;
+      }
+      .subject-text {
+        font-size: 17px !important;
+      }
+      .sender-table {
+        width: 100% !important;
+      }
+      .sender-name {
+        font-size: 15px !important;
+      }
+      .sender-email {
+        font-size: 12px !important;
+        word-break: break-all !important;
+      }
+      .message-text {
+        font-size: 14px !important;
+      }
+      .reply-btn {
+        padding: 12px 24px !important;
+        font-size: 12px !important;
+      }
+      .footer-table td {
+        display: block !important;
+        text-align: center !important;
+        padding: 4px 0 !important;
+      }
+      .header-logo {
+        font-size: 19px !important;
+      }
+      .header-badge {
+        font-size: 9px !important;
+        padding: 3px 8px !important;
+        letter-spacing: 2px !important;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:{{bg_outer}};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+
+  <!-- Full-width background wrapper -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:{{bg_outer}};background-image:linear-gradient({{grid_color}} 1px,transparent 1px),linear-gradient(90deg,{{grid_color}} 1px,transparent 1px);background-size:40px 40px;">
+    <tr>
+      <td align="center" class="outer-padding" style="padding:40px 16px;">
+
+        <!-- Email container — fixed max-width, fluid on mobile -->
+        <table role="presentation" class="email-container" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;border-collapse:collapse;">
+
+          <!-- Gradient top border -->
+          <tr>
+            <td style="height:3px;background:linear-gradient(90deg,#00e5db,#6200e5,#e50057);border-radius:8px 8px 0 0;font-size:0;line-height:0;">&nbsp;</td>
+          </tr>
+
+          <!-- Header -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_header}};padding:24px 32px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="vertical-align:middle;">
+                    <span class="header-logo" style="font-family:'Courier New',Courier,monospace;font-size:22px;font-weight:bold;color:#00e5db;letter-spacing:1px;">&lt; FH /&gt;</span>
+                  </td>
+                  <td align="right" style="vertical-align:middle;">
+                    <span class="header-badge" style="display:inline-block;font-family:'Courier New',Courier,monospace;font-size:10px;font-weight:600;color:#e50057;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(229,0,87,0.3);padding:4px 12px;border-radius:4px;">NEW MESSAGE</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Subject -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_main}};padding:24px 32px 20px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <p style="margin:0 0 6px 0;font-family:'Courier New',Courier,monospace;font-size:11px;color:{{label_color}};text-transform:uppercase;letter-spacing:2px;">SUBJECT</p>
+              <h1 class="subject-text" style="margin:0;font-family:'Courier New',Courier,monospace;font-size:20px;font-weight:600;color:{{text_primary}};line-height:1.4;">{{subject}}</h1>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_main}};padding:0 32px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <div style="height:1px;background:linear-gradient(90deg,transparent,{{divider}},transparent);">&nbsp;</div>
+            </td>
+          </tr>
+
+          <!-- Sender info -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_main}};padding:20px 32px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:{{bg_card}};border:1px solid {{border_card}};border-radius:8px;">
+                <tr>
+                  <td style="padding:18px 20px;">
+                    <p style="margin:0 0 10px 0;font-family:'Courier New',Courier,monospace;font-size:10px;color:{{label_color}};text-transform:uppercase;letter-spacing:2px;">FROM</p>
+                    <table role="presentation" class="sender-table" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="width:44px;vertical-align:middle;padding-right:12px;">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#00e5db,#6200e5);">
+                            <tr>
+                              <td align="center" style="vertical-align:middle;font-family:'Courier New',Courier,monospace;font-size:16px;font-weight:bold;color:#0a0a0f;width:44px;height:44px;">&#9679;</td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td style="vertical-align:middle;">
+                          <p class="sender-name" style="margin:0;font-size:16px;font-weight:600;color:{{text_primary}};">{{from_name}}</p>
+                          <p class="sender-email" style="margin:3px 0 0 0;font-family:'Courier New',Courier,monospace;font-size:13px;color:#00e5db;">{{from_email}}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Message body -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_main}};padding:20px 32px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <p style="margin:0 0 10px 0;font-family:'Courier New',Courier,monospace;font-size:10px;color:{{label_color}};text-transform:uppercase;letter-spacing:2px;">MESSAGE</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:2px solid {{border_message}};border-radius:0 8px 8px 0;background-color:{{bg_message}};">
+                <tr>
+                  <td class="content-padding" style="padding:18px 20px;">
+                    <div class="message-text" style="margin:0;font-size:15px;line-height:1.7;color:{{text_body}};">{{{message}}}</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Decorative divider -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_main}};padding:16px 32px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="width:30%;height:1px;background:{{scanline}};font-size:0;line-height:0;">&nbsp;</td>
+                  <td style="width:40%;text-align:center;padding:0 8px;">
+                    <span style="font-family:'Courier New',Courier,monospace;font-size:9px;color:{{scanline_dot}};letter-spacing:4px;">&#9670; &#9670; &#9670;</span>
+                  </td>
+                  <td style="width:30%;height:1px;background:{{scanline}};font-size:0;line-height:0;">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Reply button -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_main}};padding:8px 32px 28px;border-left:1px solid {{border_main}};border-right:1px solid {{border_main}};">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center">
+                    <!--[if mso]>
+                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="mailto:{{from_email}}?subject=Re:%20{{subject}}" style="height:42px;v-text-anchor:middle;width:220px;" arcsize="14%" fillcolor="#00e5db">
+                      <center style="color:#0a0a0f;font-family:sans-serif;font-size:13px;font-weight:bold;">REPLY TO {{from_name}}</center>
+                    </v:roundrect>
+                    <![endif]-->
+                    <!--[if !mso]><!-->
+                    <a class="reply-btn" href="mailto:{{from_email}}?subject=Re:%20{{subject}}" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#00e5db,#00b8b0);color:{{btn_text}};font-size:13px;font-weight:700;text-decoration:none;border-radius:6px;letter-spacing:0.5px;text-transform:uppercase;mso-hide:all;">Reply to {{from_name}}</a>
+                    <!--<![endif]-->
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td class="content-padding" style="background-color:{{bg_footer}};padding:20px 32px;border-left:1px solid {{border_footer}};border-right:1px solid {{border_footer}};border-radius:0 0 8px 8px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-table">
+                <tr>
+                  <td style="vertical-align:middle;">
+                    <p style="margin:0;font-family:'Courier New',Courier,monospace;font-size:11px;color:{{label_color}};">&lt; FH /&gt; Portfolio</p>
+                  </td>
+                  <td align="right" style="vertical-align:middle;">
+                    <p style="margin:0;font-family:'Courier New',Courier,monospace;font-size:11px;color:{{footer_subtle}};">Sent via contact form</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Gradient bottom border -->
+          <tr>
+            <td style="height:2px;background:linear-gradient(90deg,#e50057,#6200e5,#00e5db);border-radius:0 0 8px 8px;font-size:0;line-height:0;">&nbsp;</td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

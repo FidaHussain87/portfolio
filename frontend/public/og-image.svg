@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f" />
+      <stop offset="100%" stop-color="#12121f" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5db" />
+      <stop offset="100%" stop-color="#6200e5" />
+    </linearGradient>
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5db" />
+      <stop offset="60%" stop-color="#ffffff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-grad)" />
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1" />
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent-grad)" />
+
+  <!-- Accent glow circle (decorative) -->
+  <circle cx="950" cy="315" r="200" fill="#6200e5" fill-opacity="0.08" />
+  <circle cx="250" cy="315" r="250" fill="#00e5db" fill-opacity="0.04" />
+
+  <!-- Initials badge -->
+  <rect x="80" y="200" width="80" height="80" rx="16" fill="#0a0a0f" stroke="#00e5db" stroke-opacity="0.4" stroke-width="2" />
+  <text x="120" y="250" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="32" fill="#00e5db" text-anchor="middle">FH</text>
+
+  <!-- Name -->
+  <text x="190" y="248" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="56" fill="#ffffff" letter-spacing="-1">Fida Hussain</text>
+
+  <!-- Divider line -->
+  <rect x="80" y="310" width="200" height="3" rx="1.5" fill="url(#accent-grad)" />
+
+  <!-- Subtitle -->
+  <text x="80" y="360" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="28" fill="#a0a0b8">Full Stack Software Engineer</text>
+
+  <!-- Tech tags -->
+  <text x="80" y="410" font-family="monospace" font-weight="400" font-size="18" fill="#00e5db" fill-opacity="0.7">React  |  Node.js  |  TypeScript  |  Cloud Architecture</text>
+
+  <!-- URL -->
+  <text x="80" y="560" font-family="monospace" font-weight="400" font-size="18" fill="#ffffff" fill-opacity="0.4">fidahussain.dev</text>
+
+  <!-- Accent line bottom -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent-grad)" />
+</svg>

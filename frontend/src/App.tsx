@@ -1,35 +1,68 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+import { SmoothScroller } from '@components/layout'
+import { CustomCursor, NoiseOverlay, ScrollProgress, SectionDivider } from '@components/ui'
+import {
+  Preloader,
+  Navigation,
+  Hero,
+  About,
+  Skills,
+  Experience,
+  Projects,
+  Services,
+  Testimonials,
+  GitHubActivity,
+  Contact,
+  Footer,
+} from '@sections/index'
+export default function App() {
+  const [preloaderComplete, setPreloaderComplete] = useState(false)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* Skip to content link for accessibility */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to content
+      </a>
+
+      {/* Custom cursor (hidden on mobile) */}
+      <CustomCursor />
+
+      {/* Noise texture overlay */}
+      <NoiseOverlay />
+
+      {/* Scroll progress bar */}
+      {preloaderComplete && <ScrollProgress />}
+
+      {/* Preloader */}
+      {!preloaderComplete && (
+        <Preloader onComplete={() => setPreloaderComplete(true)} />
+      )}
+
+      {/* Navigation */}
+      <Navigation preloaderComplete={preloaderComplete} />
+
+      {/* Main content */}
+      <SmoothScroller>
+        <main id="main-content">
+          <Hero />
+          <SectionDivider variant="wave" />
+          <About />
+          <SectionDivider variant="diagonal" />
+          <Skills />
+          <Experience />
+          <SectionDivider variant="wave" flip />
+          <Projects />
+          <SectionDivider variant="diagonal" flip />
+          <Services />
+          <Testimonials />
+          <SectionDivider variant="wave" />
+          <GitHubActivity />
+          <SectionDivider variant="diagonal" />
+          <Contact />
+        </main>
+        <Footer />
+      </SmoothScroller>
     </>
   )
 }
-
-export default App
