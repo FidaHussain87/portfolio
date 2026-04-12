@@ -257,6 +257,192 @@ export function Hero() {
   // Canvas particle background
   useParticleCanvas(canvasRef)
 
+  // ── Pixel-stretch distortion — chars drag in mouse-move direction ──────────
+  useEffect(() => {
+    const nameEl = nameRef.current
+    if (!nameEl) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (window.matchMedia('(hover: none)').matches) return
+
+    // Wait for SplitText chars to exist (created inside document.fonts.ready)
+    let pollId: number
+    let attempts = 0
+    const MAX_ATTEMPTS = 120 // ~2s at 60fps
+
+    const RADIUS = 180        // influence radius in px
+    const STRENGTH = 50       // max displacement px
+    const STRETCH = 1.3       // scaleX multiplier at max displacement
+    const SPRING = 0.12       // lerp speed back to rest (0-1)
+
+    interface CharState {
+      el: HTMLElement
+      cx: number
+      cy: number
+      dx: number   // current X displacement
+      dy: number   // current Y displacement
+      sx: number   // current scaleX
+    }
+
+    const chars: CharState[] = []
+    let velX = 0, velY = 0
+    let mouseX = -9999, mouseY = -9999
+    let prevMouseX = -9999, prevMouseY = -9999
+    let isHovering = false
+    let loopId = 0
+
+    function init() {
+      // Get SplitText chars — they're the innermost elements created by SplitText
+      const splitChars = nameSplitRef.current?.chars as HTMLElement[] | undefined
+      const elements = splitChars && splitChars.length > 0
+        ? splitChars
+        : Array.from(nameEl!.querySelectorAll<HTMLElement>('.hero-name-line > div > div > div'))
+
+      if (elements.length === 0) {
+        if (++attempts < MAX_ATTEMPTS) {
+          pollId = requestAnimationFrame(init)
+          return
+        }
+        return
+      }
+
+      // Set up char state
+      elements.forEach((el) => {
+        el.style.display = 'inline-block'
+        el.style.willChange = 'transform'
+        const rect = el.getBoundingClientRect()
+        chars.push({
+          el,
+          cx: rect.left + rect.width / 2,
+          cy: rect.top + rect.height / 2,
+          dx: 0,
+          dy: 0,
+          sx: 1,
+        })
+      })
+
+      // Events
+      nameEl!.addEventListener('mousemove', onMouseMove)
+      nameEl!.addEventListener('mouseenter', onMouseEnter)
+      nameEl!.addEventListener('mouseleave', onMouseLeave)
+      window.addEventListener('scroll', recalcPositions, { passive: true })
+      window.addEventListener('resize', recalcPositions)
+    }
+
+    function recalcPositions() {
+      chars.forEach((c) => {
+        const rect = c.el.getBoundingClientRect()
+        c.cx = rect.left + rect.width / 2
+        c.cy = rect.top + rect.height / 2
+      })
+    }
+
+    function onMouseMove(e: MouseEvent) {
+      prevMouseX = mouseX
+      prevMouseY = mouseY
+      mouseX = e.clientX
+      mouseY = e.clientY
+      isHovering = true
+
+      // Calculate velocity (smoothed)
+      if (prevMouseX > -9000) {
+        velX = velX * 0.6 + (mouseX - prevMouseX) * 0.4
+        velY = velY * 0.6 + (mouseY - prevMouseY) * 0.4
+      }
+    }
+
+    function onMouseEnter() {
+      isHovering = true
+      if (!loopId) loopId = requestAnimationFrame(tick)
+    }
+
+    function onMouseLeave() {
+      isHovering = false
+      mouseX = -9999
+      mouseY = -9999
+      prevMouseX = -9999
+      prevMouseY = -9999
+      velX = 0
+      velY = 0
+      // Keep loop running so chars spring back
+      if (!loopId) loopId = requestAnimationFrame(tick)
+    }
+
+    function tick() {
+      let anyMoving = false
+
+      // Decay velocity when not hovering
+      if (!isHovering) {
+        velX *= 0.9
+        velY *= 0.9
+      }
+
+      for (const c of chars) {
+        let targetDx = 0
+        let targetDy = 0
+        let targetSx = 1
+
+        if (isHovering && mouseX > -9000) {
+          const distX = c.cx - mouseX
+          const distY = c.cy - mouseY
+          const dist = Math.sqrt(distX * distX + distY * distY)
+
+          if (dist < RADIUS) {
+            // Influence falls off with distance
+            const influence = 1 - dist / RADIUS
+            const eased = influence * influence // quadratic falloff
+
+            // Displace in the direction of mouse MOVEMENT (velocity), not away from cursor
+            targetDx = velX * eased * STRENGTH / 10
+            targetDy = velY * eased * STRENGTH / 10
+
+            // Stretch in the movement direction
+            const speed = Math.sqrt(velX * velX + velY * velY)
+            targetSx = 1 + (STRETCH - 1) * Math.min(1, speed / 15) * eased
+          }
+        }
+
+        // Lerp toward target
+        c.dx += (targetDx - c.dx) * SPRING
+        c.dy += (targetDy - c.dy) * SPRING
+        c.sx += (targetSx - c.sx) * SPRING
+
+        const hasMoved = Math.abs(c.dx) > 0.05 || Math.abs(c.dy) > 0.05 || Math.abs(c.sx - 1) > 0.001
+
+        if (hasMoved) {
+          c.el.style.transform = `translate(${c.dx}px, ${c.dy}px) scaleX(${c.sx.toFixed(3)})`
+          anyMoving = true
+        } else if (c.dx !== 0 || c.dy !== 0 || c.sx !== 1) {
+          c.dx = 0
+          c.dy = 0
+          c.sx = 1
+          c.el.style.transform = ''
+        }
+      }
+
+      if (isHovering || anyMoving) {
+        loopId = requestAnimationFrame(tick)
+      } else {
+        loopId = 0
+      }
+    }
+
+    pollId = requestAnimationFrame(init)
+
+    return () => {
+      cancelAnimationFrame(pollId)
+      if (loopId) cancelAnimationFrame(loopId)
+      nameEl.removeEventListener('mousemove', onMouseMove)
+      nameEl.removeEventListener('mouseenter', onMouseEnter)
+      nameEl.removeEventListener('mouseleave', onMouseLeave)
+      window.removeEventListener('scroll', recalcPositions)
+      window.removeEventListener('resize', recalcPositions)
+      chars.forEach((c) => {
+        c.el.style.transform = ''
+        c.el.style.willChange = ''
+      })
+    }
+  }, [])
+
   // ── MotionPath orbital particles ──────────────────────────────────────────
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -582,8 +768,11 @@ export function Hero() {
       {/* Main content */}
       <Container className="relative z-10 text-center">
         <div className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-          {/* Large staggered name reveal */}
-          <div ref={nameRef} className="select-none">
+          {/* Large staggered name reveal with pixel-stretch distortion */}
+          <div
+            ref={nameRef}
+            className="select-none relative"
+          >
             <div
               className={cn(
                 'hero-name-line block mb-2 md:mb-4',
