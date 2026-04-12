@@ -1,54 +1,99 @@
-# React + TypeScript + Vite
+# Portfolio Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript SPA with a cyberpunk design system, GSAP premium animations, and full dark/light theme support.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js 18+
+- npm 9+
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start Vite dev server with HMR |
+| `npm run build` | Type-check + production build |
+| `npm run preview` | Serve production build locally |
+| `npm run lint` | Run ESLint |
+
+## Architecture
+
 ```
+src/
+  components/
+    layout/         # Container, grid components
+    ui/             # Card, GlowOrb, ParallaxLayer, SkillRadar, SkillIcon,
+                    #   SectionHeading, MagneticWrapper, SectionDivider, etc.
+  data/             # Static typed data
+    experience.ts   # Work history (ExperienceEntry[])
+    projects.ts     # Portfolio projects (Project[])
+    skills.ts       # Skill categories + proficiencies (SkillCategory[])
+    personal.ts     # Name, bio, social links, contact info
+    services.ts     # Offered services
+    testimonials.ts # Client testimonials
+  design-system/
+    tokens/         # Color palette, spacing, typography tokens
+    theme/          # ThemeProvider (dark/light with system detection)
+  hooks/            # useSectionEntrance, useTextReveal, useSmoothScroll, etc.
+  sections/         # Full page sections (Hero, About, Skills, Experience, etc.)
+  styles/
+    globals.css     # Theme variables, base styles, @theme config
+    fonts.css       # @font-face declarations (Space Grotesk, Inter, JetBrains Mono)
+    noise.css       # Film grain noise overlay
+    scrollbar.css   # Custom scrollbar styling
+    utilities.css   # CSS utility classes and keyframes
+  utils/
+    gsap-register.ts  # GSAP plugin registration, custom eases, registered effects
+    cn.ts              # clsx + tailwind-merge utility
+```
+
+## Design System
+
+- **Theme:** CSS custom properties toggled via `data-theme="dark|light"` attribute
+- **Colors:** Primary (Cyan), Secondary (Violet), Accent (Hot Pink), Neutral (Blue-tinted gray)
+- **Light mode overrides:** Accent colors shift to darker, WCAG AA-compliant values
+- **Typography:** Space Grotesk (headings), Inter (body), JetBrains Mono (code/numbers)
+
+## GSAP Plugins
+
+All 11 premium plugins are registered in `src/utils/gsap-register.ts`:
+
+- **ScrollTrigger** — Scroll-driven entrances and scrub animations
+- **Flip** — Layout transition animations on tab switches
+- **SplitText** — Character/word-level text reveal animations
+- **ScrambleText** — Cyberpunk character scramble effects
+- **DrawSVG** — SVG stroke draw-on animations (contact form borders, section dividers)
+- **MorphSVG** — SVG shape morphing
+- **MotionPath** — Particle orbit paths (Hero section)
+- **CustomEase / CustomBounce / CustomWiggle** — Custom easing curves (`cyberSnap`, `neonPulse`, `glitchIn`)
+- **InertiaPlugin** — Momentum-based animations
+
+## Path Aliases
+
+Configured in both `tsconfig.app.json` and `vite.config.ts`:
+
+| Alias | Path |
+|-------|------|
+| `@/*` | `src/*` |
+| `@components/*` | `src/components/*` |
+| `@sections/*` | `src/sections/*` |
+| `@hooks/*` | `src/hooks/*` |
+| `@utils/*` | `src/utils/*` |
+| `@data/*` | `src/data/*` |
+| `@styles/*` | `src/styles/*` |
+| `@design-system/*` | `src/design-system/*` |
+
+## Deployment
+
+Deployed on Vercel. The build command is `npm run build` which runs `tsc -b && vite build`.
+
+Environment variable for contact form: `VITE_EMAILJS_*` (see `.env.example`).
