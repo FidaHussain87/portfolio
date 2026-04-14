@@ -1,8 +1,8 @@
 # Fida Hussain — Portfolio
 
-A cyberpunk-themed personal portfolio website showcasing 7+ years of full stack development experience across enterprise, SaaS, and cloud platforms.
+A cyberpunk-themed personal portfolio website showcasing 7+ years of full-stack development experience across enterprise, SaaS, and cloud platforms.
 
-**Live:** [fidahussain.dev](https://fidahussain.dev) (Vercel)
+**Live:** [fidahussain.dev](https://portfolio-nu-lime-59.vercel.app/) (Vercel)
 
 ## Tech Stack
 
